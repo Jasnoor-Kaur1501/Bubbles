@@ -1,34 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bubbles</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #f0f9ff; /* Soft blue pastel background */
-            cursor: none; /* Hide default cursor to make Bubbles the cursor */
-        }
-        * {
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
-  }
-}
-</script>
+  <meta charset="UTF-8">
+  <title>Bubbles Cursor Pet</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="root"></div>
+
+<div id="pet" class="pet">🐣</div>
+
+<div id="status">
+  Hunger: <span id="hunger">100</span>%
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
-
