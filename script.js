@@ -1,5 +1,7 @@
 const pet = document.getElementById("pet")
-const hungerDisplay = document.getElementById("hunger")
+const energyDisplay = document.getElementById("energy")
+const happyDisplay = document.getElementById("happy")
+const levelDisplay = document.getElementById("level")
 const sleepBubble = document.getElementById("sleepBubble")
 
 let mouseX = window.innerWidth/2
@@ -9,6 +11,9 @@ let petX = mouseX
 let petY = mouseY
 
 let hunger = 100
+let energy = 100
+let happiness = 80
+let level = 1
 let idleTimer = 0
 
 document.addEventListener("mousemove", e=>{
