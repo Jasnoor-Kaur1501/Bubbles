@@ -43,7 +43,7 @@ document.addEventListener("mousemove", e=>{
   idleTimer = 0
 
   pet.classList.remove("sleep")
-  sleepBubble.style.opacity = 0
+  sleepBubble.style.opacity = 1
 })
 
 
@@ -97,9 +97,10 @@ function updatePet(){
   pet.style.left = petX + "px"
   pet.style.top = petY + "px"
 
+if(sleepBubble){
   sleepBubble.style.left = petX + 40 + "px"
   sleepBubble.style.top = petY - 30 + "px"
-
+}
   idleTimer++
 
   if(idleTimer > 300){
