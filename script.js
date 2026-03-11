@@ -1,6 +1,6 @@
 const pet = document.getElementById("pet")
 const sleepBubble = document.getElementById("sleepBubble")
-
+console.log("pet element:", pet)
 const hungerDisplay = document.getElementById("hunger")
 const energyDisplay = document.getElementById("energy")
 const happyDisplay = document.getElementById("happy")
@@ -109,7 +109,9 @@ if(sleepBubble){
 
     energy = Math.min(100, energy + 1)
   }
-
+pet.style.zIndex = 9999
+pet.style.opacity = 1
+  
   updateMood()
 
   requestAnimationFrame(updatePet)
