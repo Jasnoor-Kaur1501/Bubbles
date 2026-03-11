@@ -1,8 +1,10 @@
 const pet = document.getElementById("pet")
+const sleepBubble = document.getElementById("sleepBubble")
+
+const hungerDisplay = document.getElementById("hunger")
 const energyDisplay = document.getElementById("energy")
 const happyDisplay = document.getElementById("happy")
 const levelDisplay = document.getElementById("level")
-const sleepBubble = document.getElementById("sleepBubble")
 
 let mouseX = window.innerWidth/2
 let mouseY = window.innerHeight/2
@@ -14,7 +16,26 @@ let hunger = 100
 let energy = 100
 let happiness = 80
 let level = 1
+
 let idleTimer = 0
+
+// BUTTON ACTIONS
+
+document.getElementById("feed").onclick = () => {
+  hunger = Math.min(100, hunger + 20)
+}
+
+document.getElementById("play").onclick = () => {
+  happiness = Math.min(100, happiness + 15)
+  energy = Math.max(0, energy - 10)
+}
+
+document.getElementById("petBtn").onclick = () => {
+  happiness = Math.min(100, happiness + 5)
+}
+
+
+// MOUSE MOVEMENT
 
 document.addEventListener("mousemove", e=>{
   mouseX = e.clientX
@@ -25,11 +46,11 @@ document.addEventListener("mousemove", e=>{
   sleepBubble.style.opacity = 0
 })
 
+
+// CLICK REACTION
+
 document.addEventListener("click", ()=>{
 
-  hunger = Math.min(100, hunger + 10)
-
-  // jump animation
   pet.style.transform = "translate(-50%, -60%) scale(1.2)"
 
   setTimeout(()=>{
@@ -37,6 +58,36 @@ document.addEventListener("click", ()=>{
   },200)
 
 })
+
+
+// PET CLICK INTERACTION
+
+pet.onclick = () => {
+  happiness = Math.min(100, happiness + 10)
+}
+
+
+// MOOD SYSTEM
+
+function updateMood(){
+
+  if(hunger < 20){
+    pet.innerHTML = "😫"
+  }
+  else if(energy < 20){
+    pet.innerHTML = "😴"
+  }
+  else if(happiness > 80){
+    pet.innerHTML = "😄"
+  }
+  else{
+    pet.innerHTML = "🐥"
+  }
+
+}
+
+
+// PET MOVEMENT LOOP
 
 function updatePet(){
 
@@ -54,27 +105,49 @@ function updatePet(){
   if(idleTimer > 300){
     pet.classList.add("sleep")
     sleepBubble.style.opacity = 1
+
+    energy = Math.min(100, energy + 1)
   }
+
+  updateMood()
 
   requestAnimationFrame(updatePet)
 }
 
+
+// GAME LOOP
+
 setInterval(()=>{
 
-  hunger -= 1
+  hunger -= 2
+  energy -= 1
+  happiness -= 1
 
   if(hunger < 30){
     pet.classList.add("hungry")
-  } else{
+  }else{
     pet.classList.remove("hungry")
   }
 
-  if(hunger <= 0){
-    hunger = 0
+  if(hunger < 0) hunger = 0
+  if(energy < 0) energy = 0
+  if(happiness < 0) happiness = 0
+
+  // LEVEL SYSTEM
+
+  if(happiness > 90 && hunger > 80){
+    level += 1
+    happiness = 70
   }
 
+  // UPDATE UI
+
   hungerDisplay.textContent = hunger
+  energyDisplay.textContent = energy
+  happyDisplay.textContent = happiness
+  levelDisplay.textContent = level
 
 },2000)
+
 
 updatePet()
