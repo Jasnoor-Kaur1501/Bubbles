@@ -91,8 +91,8 @@ function updateMood(){
 
 function updatePet(){
 
-  petX += (mouseX - petX) * 0.08
-  petY += (mouseY - petY) * 0.08
+petX = Math.max(40, Math.min(window.innerWidth - 40, petX))
+petY = Math.max(40, Math.min(window.innerHeight - 40, petY))
 
   pet.style.left = petX + "px"
   pet.style.top = petY + "px"
