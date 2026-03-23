@@ -187,4 +187,21 @@ body {
     opacity: 1;
 }
 
+/* Scrollbar styling for stats panel */
+.stats-panel::-webkit-scrollbar {
+    width: 6px;
+}
 
+.stats-panel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.stats-panel::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.stats-panel::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
