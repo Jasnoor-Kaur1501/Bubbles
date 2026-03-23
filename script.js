@@ -35,3 +35,41 @@ class DeskPet {
         this.lastMoodEmoji = '🐥';
         this.isFlipped = false;
 
+        // Idle tracking
+        this.lastMouseMove = Date.now();
+        this.idleThreshold = 3000; // 3 seconds before wandering
+        this.sleepThreshold = 8000; // 8 seconds before sleeping
+
+        // Movement
+        this.speed = 2;
+        this.easing = 0.08;
+
+        // Event listeners
+        this.setupEventListeners();
+
+        // Start animation loop
+        this.animate();
+
+        // Start stat decay
+        this.startStatDecay();
+
+        // Start state changes
+        this.startStateChanges();
+
+        // Initial render
+        this.updateUI();
+    }
+
+    setupEventListeners() {
+        // Mouse movement tracking
+        document.addEventListener('mousemove', (e) => {
+            this.targetX = e.clientX;
+            this.targetY = e.clientY;
+            this.lastMouseMove = Date.now();
+            this.mode = 'follow';
+        });
+
+        // Pet click - jump and play
+        this.petEl.addEventListener('click', () => {
+            this.jump();
+            this.stats.hap
