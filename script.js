@@ -21,3 +21,17 @@ class DeskPet {
         this.targetX = this.x;
         this.targetY = this.y;
 
+        // Stats
+        this.stats = {
+            hunger: 100,
+            energy: 100,
+            happiness: 100,
+            level: 1
+        };
+
+        // Pet State
+        this.state = 'idle'; // idle, curious, playful, sleepy
+        this.mode = 'follow'; // follow, wander, sleep
+        this.lastMoodEmoji = '🐥';
+        this.isFlipped = false;
+
