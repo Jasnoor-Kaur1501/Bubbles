@@ -164,4 +164,27 @@ body {
     }
 }
 
+.sleep-bubble {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0;
+    pointer-events: none;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px);
+    }
+}
+
+.sleep-bubble.visible {
+    opacity: 1;
+}
+
 
