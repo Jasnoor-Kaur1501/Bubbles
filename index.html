@@ -8,4 +8,39 @@
 </head>
 <body>
     <div id="app">
+        <!-- Stats Panel -->
+        <div id="stats-panel" class="panel">
+            <div class="stat">
+                <label>Hunger:</label>
+                <div class="bar-container">
+                    <div id="hunger-bar" class="bar"></div>
+                </div>
+                <span id="hunger-text">0</span>
+            </div>
+            <div class="stat">
+                <label>Energy:</label>
+                <div class="bar-container">
+                    <div id="energy-bar" class="bar"></div>
+                </div>
+                <span id="energy-text">0</span>
+            </div>
+            <div class="stat">
+                <label>Happiness:</label>
+                <div class="bar-container">
+                    <div id="happiness-bar" class="bar"></div>
+                </div>
+                <span id="happiness-text">0</span>
+            </div>
+            <div class="level-display">
+                Level: <span id="level-text">1</span>
+            </div>
+        </div>
 
+        <!-- Interaction Buttons -->
+        <div id="controls" class="panel">
+            <button id="feed-btn">Feed 🍎</button>
+            <button id="play-btn">Play 🎾</button>
+            <button id="pet-btn">Pet ✨</button>
+        </div>
+
+</html>
