@@ -275,7 +275,19 @@ function updateMood() {
         elements.pet.textContent = newEmoji;
     }
 }
+function checkLevelUp() {
+    if (petState.stats.happiness > 90 && petState.stats.hunger > 80) {
+        petState.stats.level++;
+        petState.stats.happiness = 60; // Reset happiness slightly
+        
+        // Visual celebration
+        jump();
+        console.log(`Leveled up to ${petState.stats.level}!`);
+    }
+}
 
+// Start the app
+init();
 
 
 
