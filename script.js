@@ -236,6 +236,46 @@ function updateFlip(dx) {
         petState.isFlipped = dx < 0;
     }
 }
+// --- Actions & Helpers ---
+
+function jump() {
+    elements.pet.classList.remove('animate-jump');
+    void elements.pet.offsetWidth; // Trigger reflow
+    elements.pet.classList.add('animate-jump');
+    
+    setTimeout(() => {
+        elements.pet.classList.remove('animate-jump');
+    }, 400);
+}
+
+function updateUI() {
+    elements.hungerBar.style.width = `${petState.stats.hunger}%`;
+    elements.energyBar.style.width = `${petState.stats.energy}%`;
+    elements.happinessBar.style.width = `${petState.stats.happiness}%`;
+    
+    elements.hungerText.textContent = Math.round(petState.stats.hunger);
+    elements.energyText.textContent = Math.round(petState.stats.energy);
+    elements.happinessText.textContent = Math.round(petState.stats.happiness);
+    elements.levelText.textContent = petState.stats.level;
+}
+
+function updateMood() {
+    let newEmoji = '🐥'; // Default
+
+    if (petState.stats.hunger < 20) {
+        newEmoji = '😫';
+    } else if (petState.stats.energy < 20) {
+        newEmoji = '😴';
+    } else if (petState.stats.happiness > 80) {
+        newEmoji = '😄';
+    }
+
+    if (newEmoji !== petState.currentEmoji) {
+        petState.currentEmoji = newEmoji;
+        elements.pet.textContent = newEmoji;
+    }
+}
+
 
 
 
