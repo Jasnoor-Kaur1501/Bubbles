@@ -211,5 +211,31 @@ function update() {
 
     requestAnimationFrame(update);
 }
+function setNewWanderTarget() {
+    const margin = 100;
+    petState.targetX = margin + Math.random() * (window.innerWidth - margin * 2);
+    petState.targetY = margin + Math.random() * (window.innerHeight - margin * 2);
+}
+
+function clampPosition() {
+    const halfSize = CONFIG.PET_SIZE / 2;
+    petState.x = Math.max(halfSize, Math.min(window.innerWidth - halfSize, petState.x));
+    petState.y = Math.max(halfSize, Math.min(window.innerHeight - halfSize, petState.y));
+}
+
+function applyTransform() {
+    // We use translate for position and scaleX for flipping
+    // To avoid breaking positioning, we combine them
+    const flip = petState.isFlipped ? -1 : 1;
+    elements.petContainer.style.transform = `translate(${petState.x - CONFIG.PET_SIZE/2}px, ${petState.y - CONFIG.PET_SIZE/2}px)`;
+    elements.pet.style.transform = `scaleX(${flip})`;
+}
+
+function updateFlip(dx) {
+    if (Math.abs(dx) > 1) {
+        petState.isFlipped = dx < 0;
+    }
+}
+
 
 
