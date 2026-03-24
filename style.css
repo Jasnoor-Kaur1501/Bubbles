@@ -193,4 +193,8 @@ button:active {
     animation: wiggle 0.3s infinite;
 }
 
+/* Flip classes */
+.flip-h {
+    transform: scaleX(-1);
+}
 
