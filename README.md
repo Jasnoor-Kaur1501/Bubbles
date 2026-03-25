@@ -46,7 +46,7 @@ No frameworks, no libraries — just pure frontend.
 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/bubbles-desk-pet.git
+git clone (https://jasnoor-kaur1501.github.io/Bubbles/)
 ```
 
 2. Open the project folder
